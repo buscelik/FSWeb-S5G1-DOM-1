@@ -43,3 +43,51 @@ console.log('Proje açıldı!')
 
 
 /* Kodlar Buradan aşağıya */
+
+
+const ankerTag = document.querySelectorAll("header nav a");
+ankerTag.forEach((m, i) => {
+  m.textContent = siteContent.nav[`nav-item-${i + 1}`];
+  m.classList.add("italic");
+});
+// logo-img  için
+document
+  .getElementById("logo-img")
+  .setAttribute("src", siteContent.images["logo-img"]);
+//cta-img için
+document
+  .getElementById("cta-img")
+  .setAttribute("src", siteContent.images["cta-img"]);
+//middle-img için
+document
+  .getElementById("middle-img")
+  .setAttribute("src", siteContent.images["middle-img"]);
+//h1 için
+document.querySelector(".cta-text h1").textContent = siteContent.cta.h1;
+//button için
+document.querySelectorAll(".cta-text button")[0].textContent =
+  siteContent.cta.button;
+// section content kısmı için
+const contentKeys = Object.keys(siteContent["ana-içerik"]);
+const contentSection = document.querySelectorAll(".text-content");
+//listeden h4 ve p leri sırayla alıcaz
+contentSection.forEach((c, i) => {
+  c.querySelector("h4").textContent =
+    siteContent["ana-içerik"][contentKeys[i * 2]];
+  c.querySelector("p").textContent =
+    siteContent["ana-içerik"][contentKeys[i * 2 + 1]];
+});
+//section contact kısmı için
+//h4
+document.querySelector(".contact h4").textContent =
+  siteContent.iletisim["iletisim-h4"];
+//p içiin
+const contactKeys = Object.keys(siteContent.iletisim);
+const contactP = document.querySelectorAll(".contact p");
+contactP.forEach((c, i) => {
+  c.textContent = siteContent.iletisim[contactKeys[i + 1]];
+});
+//footer kısmı için
+const footerCopy = document.querySelector("footer a");
+footerCopy.textContent = siteContent.footer["copyright"];
+footerCopy.classList.add("bold");
